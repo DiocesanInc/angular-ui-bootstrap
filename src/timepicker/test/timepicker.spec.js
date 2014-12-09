@@ -71,26 +71,6 @@ describe('timepicker directive', function () {
     return e;
   }
 
-  function keypress(key) {
-    var e = $.Event('keypress');
-    switch(key) {
-      case 'left':
-        e.which = 37;
-        break;
-      case 'up':
-        e.which = 38;
-        break;
-      case 'right':
-        e.which = 39;
-        break;
-      case 'down':
-        e.which = 40;
-        break;
-    }
-    return e;
-  }
-
-
   function keydown(key) {
     var e = $.Event('keydown');
     switch(key) {
@@ -410,70 +390,6 @@ describe('timepicker directive', function () {
     expect(getModelState()).toEqual([15, 40]);
 
     hoursEl.trigger( downMouseWheelEvent );
-    $rootScope.$digest();
-    expect(getTimeState()).toEqual(['02', '40', 'PM']);
-    expect(getModelState()).toEqual([14, 40]);
-  });
-
-  it('responds properly on "keypress" events', function() {
-    var inputs = element.find('input');
-    var hoursEl = inputs.eq(0), minutesEl = inputs.eq(1);
-    var upKeypressEvent = keypress('up');
-    var downKeypressEvent = keypress('down');
-    var leftKeypressEvent = keypress('left');
-
-    expect(getTimeState()).toEqual(['02', '40', 'PM']);
-    expect(getModelState()).toEqual([14, 40]);
-
-    // UP
-    hoursEl.trigger( upKeypressEvent );
-    $rootScope.$digest();
-    expect(getTimeState()).toEqual(['03', '40', 'PM']);
-    expect(getModelState()).toEqual([15, 40]);
-
-    hoursEl.trigger( upKeypressEvent );
-    $rootScope.$digest();
-    expect(getTimeState()).toEqual(['04', '40', 'PM']);
-    expect(getModelState()).toEqual([16, 40]);
-
-    minutesEl.trigger( upKeypressEvent );
-    $rootScope.$digest();
-    expect(getTimeState()).toEqual(['04', '41', 'PM']);
-    expect(getModelState()).toEqual([16, 41]);
-
-    minutesEl.trigger( upKeypressEvent );
-    $rootScope.$digest();
-    expect(getTimeState()).toEqual(['04', '42', 'PM']);
-    expect(getModelState()).toEqual([16, 42]);
-
-    // DOWN
-    minutesEl.trigger( downKeypressEvent );
-    $rootScope.$digest();
-    expect(getTimeState()).toEqual(['04', '41', 'PM']);
-    expect(getModelState()).toEqual([16, 41]);
-
-    minutesEl.trigger( downKeypressEvent );
-    $rootScope.$digest();
-    expect(getTimeState()).toEqual(['04', '40', 'PM']);
-    expect(getModelState()).toEqual([16, 40]);
-
-    hoursEl.trigger( downKeypressEvent );
-    $rootScope.$digest();
-    expect(getTimeState()).toEqual(['03', '40', 'PM']);
-    expect(getModelState()).toEqual([15, 40]);
-
-    hoursEl.trigger( downKeypressEvent );
-    $rootScope.$digest();
-    expect(getTimeState()).toEqual(['02', '40', 'PM']);
-    expect(getModelState()).toEqual([14, 40]);
-
-    // Other keypress
-    hoursEl.trigger( leftKeypressEvent );
-    $rootScope.$digest();
-    expect(getTimeState()).toEqual(['02', '40', 'PM']);
-    expect(getModelState()).toEqual([14, 40]);
-
-    minutesEl.trigger( leftKeypressEvent );
     $rootScope.$digest();
     expect(getTimeState()).toEqual(['02', '40', 'PM']);
     expect(getModelState()).toEqual([14, 40]);

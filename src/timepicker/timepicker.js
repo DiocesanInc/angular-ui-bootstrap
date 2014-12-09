@@ -122,7 +122,7 @@ angular.module('ui.bootstrap.timepicker', [])
 
   // Respond on up/down arrowkeys
   this.setupArrowkeyEvents = function( hoursInputEl, minutesInputEl ) {
-    hoursInputEl.bind('keydown keypress', function(e) {
+    hoursInputEl.bind('keydown', function(e) {
       if ( e.which === 38 ) { // up
         $scope.$apply(function() {
           $scope.incrementHours();
@@ -137,7 +137,7 @@ angular.module('ui.bootstrap.timepicker', [])
       }
     });
 
-    minutesInputEl.bind('keydown keypress', function(e) {
+    minutesInputEl.bind('keydown', function(e) {
       if ( e.which === 38 ) { // up
         $scope.$apply(function() {
           $scope.incrementMinutes();
