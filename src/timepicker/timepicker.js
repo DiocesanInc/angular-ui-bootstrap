@@ -124,31 +124,27 @@ angular.module('ui.bootstrap.timepicker', [])
   this.setupArrowkeyEvents = function( hoursInputEl, minutesInputEl ) {
     hoursInputEl.bind('keydown', function(e) {
       if ( e.which === 38 ) { // up
-        $scope.$apply(function() {
-          $scope.incrementHours();
-        });
         e.preventDefault();
+        $scope.incrementHours();
+        $scope.$apply();
       }
       else if ( e.which === 40 ) { // down
-        $scope.$apply(function() {
-          $scope.decrementHours();
-        });
         e.preventDefault();
+        $scope.decrementHours();
+        $scope.$apply();
       }
     });
 
     minutesInputEl.bind('keydown', function(e) {
       if ( e.which === 38 ) { // up
-        $scope.$apply(function() {
-          $scope.incrementMinutes();
-        });
         e.preventDefault();
+        $scope.incrementMinutes();
+        $scope.$apply();
       }
       else if ( e.which === 40 ) { // down
-        $scope.$apply(function() {
-          $scope.decrementMinutes();
-        });
         e.preventDefault();
+        $scope.decrementMinutes();
+        $scope.$apply();
       }
     });
   };
