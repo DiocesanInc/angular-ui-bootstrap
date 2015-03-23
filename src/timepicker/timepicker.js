@@ -27,7 +27,7 @@ angular.module('ui.bootstrap.timepicker', [])
       this.setupMousewheelEvents( hoursInputEl, minutesInputEl );
     }
 
-    var arrowkeys = angular.isDefined($attrs.arrowkeys) ? $scope.$parent.$eval($attrs.arrowkeys) : timepickerConfig.arrowkeys;
+    var arrowkeys = angular.isDefined($attrs.arrowkeys) ? $scope.$eval($attrs.arrowkeys) : timepickerConfig.arrowkeys;
     if (arrowkeys) {
       this.setupArrowkeyEvents( hoursInputEl, minutesInputEl );
     }
